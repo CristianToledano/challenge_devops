@@ -1,0 +1,68 @@
+# CREATE ROLE AND BINDROLE FOR NAMESPACE usuario-1
+kind: Role 
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+   namespace: usuario-1
+   name: usuario-1-role
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+  
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods-on-usuario-1
+  namespace: usuario-1
+subjects:
+- kind: User
+  name: usuario-3
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: usuario-4
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: usuario-5
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: usuario-1-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+# CREATE ROLE AND BINDROLE FOR NAMESPACE usuario-2
+
+kind: Role 
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+   namespace: usuario-2
+   name: usuario-2-role
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+  
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods-on-usuario-2
+  namespace: usuario-2
+subjects:
+- kind: User
+  name: usuario-3
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: usuario-4
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: usuario-5
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: usuario-2-role
+  apiGroup: rbac.authorization.k8s.io

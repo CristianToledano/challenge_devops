@@ -6,4 +6,4 @@
     <maven.compiler.target>1.6</maven.compiler.target>
 </properties>
 
-to fix the problem with versions.
+to fix the problem with versions

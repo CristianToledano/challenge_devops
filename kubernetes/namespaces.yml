@@ -1,0 +1,11 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: usuario-1
+
+---
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: usuario-2

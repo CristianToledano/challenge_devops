@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  terraform:
+    image: hashicorp/terraform:0.12.24
+    volumes:
+      - ./variables.tf:/variables.tf
+      - ./outputs.tf:/outputs.tf
+      - ./versions.tf:/versions.tf
+      - ./vpc.tf:/vpc.tf
+      - ./security-groups.tf:/security-groups.tf
+      - ./main.tf:/main.tf
+      - ~/.terraform/:/.terraform/
+      - ./terraform.tfstate:/terraform.tfstate
