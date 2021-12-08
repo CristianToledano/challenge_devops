@@ -1,11 +1,22 @@
+
 FROM jenkins/jenkins:lts
-# if we want to install via apt
+ 
 USER root
-RUN apt-get update && apt-get install -y maven
-# drop back to the regular jenkins user - good practice
-USER jenkins
 
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+RUN apt-get update -qq && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common
 
-#Add iptables rules?
+COPY pluggins.txt /usr/share/jenkins/ref/plugins.txt
+
+
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+
+RUN add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable"
+
+RUN apt-get update -qq && apt-get install -qqy docker-ce docker-ce-cli containerd.io
+
+RUN usermod -aG docker jenkins
+
+ENTRYPOINT ["/bin/sh", "-c", "service docker start && /sbin/tini -- /usr/local/bin/jenkins.sh"]
