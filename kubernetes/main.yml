@@ -16,8 +16,8 @@ nodeGroups:
     instanceType: t2.small
     desiredCapacity: 1
     privateNetworking: true
-  - name: ng-2-builders
-    labels: { role: builders }
+  - name: ng-2-workers
+    labels: { role: workers }
     instanceType: t2.small
     desiredCapacity: 1
     privateNetworking: true
