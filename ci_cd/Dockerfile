@@ -17,6 +17,8 @@ RUN add-apt-repository \
 
 RUN apt-get update -qq && apt-get install -qqy docker-ce docker-ce-cli containerd.io
 
+RUN apt install maven
+
 RUN usermod -aG docker jenkins
 
 ENTRYPOINT ["/bin/sh", "-c", "service docker start && /sbin/tini -- /usr/local/bin/jenkins.sh"]
