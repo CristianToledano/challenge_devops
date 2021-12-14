@@ -18,12 +18,12 @@ vpc:
 nodeGroups:
   - name: ng-1-workers
     labels: { role: workers }
-    instanceType: t2.small
+    instanceType: t3.large
     desiredCapacity: 1
     privateNetworking: true
   - name: ng-2-workers
     labels: { role: workers }
-    instanceType: t2.small
+    instanceType: t3.large
     desiredCapacity: 1
     privateNetworking: true
     iam:
