@@ -2,13 +2,18 @@ kind: ClusterConfig
 apiVersion: eksctl.io/v1alpha5
 metadata:
   name: cluster-in-existing-vpc
-  region: eu-north-1
+  region: us-east-1
 vpc:
+  id: vpc-0ce2e4f5ca4d03d65
+  cidr: "172.31.0.0/16"
   subnets:
-    private:
-      eu-north-1a: { id: subnet-0ff156e0c4a6d300c }
-      eu-north-1b: { id: subnet-0549cdab573695c03 }
-      eu-north-1c: { id: subnet-0426fb4a607393184 }
+    public:
+      us-east-1a:
+        id: subnet-08592c29816595efe
+      us-east-1b:
+        id: subnet-056189bf741ad4a8e
+      us-east-1c:
+        id: subnet-07bf113f6d926039f
 
 nodeGroups:
   - name: ng-1-workers
