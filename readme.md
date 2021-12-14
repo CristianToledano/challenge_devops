@@ -26,6 +26,19 @@ You can start to create the cluster just runing all the manifests with :
 kubectl apply -f "manifest-template.yml"
 ```
 
+To create de Kubernetes cluster in kubernetes folder, i created the cluster with the eksctl tool. I recommend you use theese commands:
+```bash
+To create:
+
+eksctl create cluster -f cluster.yaml
+
+to delete: 
+
+eksctl delete cluster -f cluster.yaml
+```
+
+
+
 ## terraform
 
 I created this folder just for fun, to try other technologies and ways to create a new k8s cluster.
